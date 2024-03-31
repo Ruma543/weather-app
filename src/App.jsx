@@ -100,7 +100,7 @@ function App() {
           <div>
             <img className="h-10 w-10" src={img1} alt="" />
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col text-xs font-bold">
             <div className="flex gap-4">
               {' '}
               <p>{weekday}</p>
@@ -108,26 +108,25 @@ function App() {
             </div>
             <p>{item.weather[0].description}</p>
           </div>
-          {/* Render other forecast data as needed */}
         </div>
       );
     });
   };
   return (
     <div
-      className=" relative w-11/12 md:4/5 lg:w-3/5 h-full lg:h-[80vh] my-10  mx-auto py-7 rounded-xl "
+      className=" relative w-11/12 md:4/5 lg:w-4/5 h-full lg:h-[90vh] my-10  mx-auto py-4 rounded-xl "
       style={{
         backgroundImage: `url(${img})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
     >
-      <div className="">
+      <div className="w-full">
         <h2 className="text-center font-bold text-4xl text-white">
           Weather App
         </h2>
       </div>
-      <div className="px-6 py-5 flex justify-center items-center gap-5">
+      <div className=" w-full px-6 my-3 flex justify-center items-center gap-5">
         <div className="flex justify-center items-center my-4">
           {' '}
           <img className="w-20 h-20 rounded-xl" src={img1} alt="" />
@@ -146,7 +145,7 @@ function App() {
         </button>
       </div>
 
-      <div className="px-6  flex justify-center items-center gap-5">
+      <div className="px-6 mb-3  flex justify-center items-center gap-5">
         {typeof weather.main !== 'undefined' ? (
           <div className=" bg-white rounded-xl px-5 py-5 drop-shadow-xl flex flex-row space-x-3">
             {/* Location  */}
@@ -198,10 +197,10 @@ function App() {
         )}
       </div>
       {/* Render Forecast */}
-      <div className="px-6 py-5 flex justify-center items-center gap-5">
-        <div className="bg-white rounded-xl px-5 py-5 drop-shadow-xl">
-          <h3 className="text-black font-semibold">5-Day Forecast</h3>
-          <div className="grid grid-cols-3 gap-5">{renderForecast()}</div>
+      <div className="px-6  w-full flex  items-center gap-5">
+        <div className="bg-white w-full rounded-xl px-5 py-5 drop-shadow-xl">
+          <h3 className="text-black font-semibold">Forecast</h3>
+          <div className="grid grid-cols-5 gap-2">{renderForecast()}</div>
         </div>
       </div>
     </div>
