@@ -1,8 +1,7 @@
-# React + Vite
+### To run locally clone the code from github repo.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### run the command : npm i
 
-Currently, two official plugins are available:
+### then the project run locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### project live link: https://courageous-reason.surge.sh

@@ -53,11 +53,10 @@ function App() {
       .then(result => {
         setWeather(result);
         console.log(result);
+        setUnit('metric');
       });
   };
-  const toggleUnit = () => {
-    setUnit(unit === 'metric' ? 'imperial' : 'metric');
-  };
+
   // weather icon set
   const renderWeatherIcon = () => {
     const condition = weather.weather[0].main;
@@ -112,6 +111,23 @@ function App() {
       );
     });
   };
+  // temp toggole
+  const toggleUnit = () => {
+    setUnit(unit === 'metric' ? 'imperial' : 'metric');
+  };
+
+  const convertTemperature = temp => {
+    if (typeof temp !== 'undefined') {
+      if (unit === 'metric') {
+        return temp;
+      } else {
+        // Convert Celsius to Fahrenheit
+        return (temp * 9) / 5 + 32;
+      }
+    } else {
+      return temp;
+    }
+  };
   return (
     <div
       className=" relative w-11/12 md:4/5 lg:w-4/5 h-full lg:h-[90vh] my-10  mx-auto py-4 rounded-xl "
@@ -147,7 +163,7 @@ function App() {
 
       <div className="px-6 mb-3  flex justify-center items-center gap-5">
         {typeof weather.main !== 'undefined' ? (
-          <div className=" bg-white rounded-xl px-5 py-5 drop-shadow-xl flex flex-row space-x-3">
+          <div className=" bg-white rounded-xl px-5 py-5 drop-shadow-xl grid grid-cols-2 lg:flex lg:flex-row space-x-3">
             {/* Location  */}
             <p className="px-3 py-3  bg-black text-white rounded-lg">
               Location: {weather.name}
@@ -155,26 +171,16 @@ function App() {
 
             {/* Temperature Celsius  */}
             <div className="flex  items-center justify-between gap-5">
-              {' '}
               <p className="px-3 py-3 bg-black text-white rounded-lg">
-                Temperature: {weather.main.temp}&deg;
-                {unit === 'metric' ? 'C' : 'F'}{' '}
-                <span>
-                  {unit === 'metric' ? (
-                    <button
-                      onClick={toggleUnit}
-                      className=" rounded-lg bg-white px-3  text-black"
-                    >
-                      F
-                    </button>
-                  ) : (
-                    <button
-                      onClick={toggleUnit}
-                      className=" rounded-lg  bg-white px-3  text-black"
-                    >
-                      C
-                    </button>
-                  )}
+                Temperature: {convertTemperature(weather.main.temp)}&deg;
+                {unit === 'metric' ? 'C' : 'F'}
+                <span className="mx-2">
+                  <button
+                    onClick={toggleUnit}
+                    className="rounded-lg bg-white px-3 text-black"
+                  >
+                    {unit === 'metric' ? 'F' : 'C'}
+                  </button>
                 </span>
               </p>
             </div>
